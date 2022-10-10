@@ -1,0 +1,27 @@
+.profile {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  background-color: #4056A1;
+}
+
+header img {
+  margin-top: 50px;
+}
+
+header p {
+  color: #FFFFFF;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 45px;
+}
+
+/* header h2 {
+
+}
+
+header strong {
+  font-weight: bold;
+} */

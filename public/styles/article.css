@@ -1,12 +1,20 @@
+.tweet-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 60%;
+  max-width: 60%;
+}
+
 article {
   margin-top: 40px;
   margin-bottom: 40px;
   align-self: center;
-  min-width: 60%;
-  max-width: 60%;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #ffcdca;
   border: 3px solid #383838;
   border-radius: 2px;
   padding: 10px;
@@ -36,11 +44,13 @@ article header {
 article img {
   width: 75px;
   height: 75px;
+  margin-right: 10px;
 }
 
 article button {
   all: unset;
   cursor: pointer;
+  margin: 3px;
 }
 
 article i {

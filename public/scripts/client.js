@@ -5,10 +5,10 @@
  */
 
 // Keep track of tweet length and display characters left, and prevent typing after reaching maximum
-$tweet = $('#tweet-text');
-$tweetTracker = $('#tweet-counter');
+const $tweet = $('#tweet-text');
+const $tweetTracker = $('#tweet-counter');
 $tweet.on('keypress', (e) => {
-  tweetLength = $tweet.val().length;
+  const tweetLength = $tweet.val().length;
   tweetLength === 140 ? $tweetTracker.html(140 - tweetLength) : $tweetTracker.html(140 - tweetLength - 1);
 
   if (140 - tweetLength === 0) {
@@ -17,7 +17,7 @@ $tweet.on('keypress', (e) => {
 });
 // Check if tweet length is maximum and allow deleting to lower tweet length
 $tweet.on('keydown', (e) => {
-  tweetLength = $tweet.val().length;
+  const tweetLength = $tweet.val().length;
 
   if (e.ctrlKey && e.key === 'Backspace') {
     $tweetTracker.html(140);
@@ -29,10 +29,55 @@ $tweet.on('keydown', (e) => {
 });
 // Check if anything pasted inside will exceed tweet length maximum, prevent if so
 $tweet.on('paste', (e) => {
-  tweetLength = $tweet.val().length;
+  const tweetLength = $tweet.val().length;
 
-  clipboardData = e.clipboardData || window.clipboardData;
+  const clipboardData = e.clipboardData || window.clipboardData;
   if (140 - (tweetLength + e.clipboardData.getData('Text').length) <= 0) {
     e.preventDefault();
   }
 });
+
+// Show tweet prompt when clicked
+$('#show-prompt').on('click', () => {
+  $('#write-tweet').slideDown();
+});
+// Hide tweet prompt when clicked
+$('#hide-button').on('click', () => {
+  $('#write-tweet').slideUp();
+});
+
+// Submits user entered tweet to json database?
+const $tweetForm = $('#write-tweet');
+$tweetForm.submit((e) => {
+  e.preventDefault();
+
+  $.post('/tweets/', $tweetForm.serialize(), () => {
+    $tweetForm[0].childNodes[3].value = '';
+    $tweetForm[0].childNodes[11].innerHTML = 140;
+    $tweetForm.slideUp();
+    loadTweets();
+  });
+});
+
+// Append tweet to tweet list on main page
+const createTweetElement = (tweetObj) => {
+  $list = $('.tweet-container');
+  $list.prepend(`<article class="tweet-article"><header><div class="tweet-name"><img src="${tweetObj.user.avatars}"><h4>${tweetObj.user.name}</h4></div><span>${tweetObj.user.handle}</span></header><p>${tweetObj.content.text}</p><footer><span>${Math.round(((((Date.now()) - tweetObj.created_at)) / 1000) / 86400)} days ago</span><div><button type="button"><i class="fa-solid fa-font-awesome"></i></button><button type="button"><i class="fa-solid fa-retweet"></i></button><button type="button"><i class="fa-regular fa-heart"></i></button></div></footer></article>`);
+};
+
+// Take list of tweets and append each one
+const renderTweets = (tweetArray) => {
+  $('.tweet-article').remove();
+  for (let tweet of tweetArray) {
+    createTweetElement(tweet);
+  }
+};
+
+// Load all tweets from server database and send them to be rendered
+const loadTweets = () => {
+  $.get('/tweets/', (res, req) => {
+    renderTweets(res);
+  });
+};
+
+loadTweets();

@@ -1,6 +1,5 @@
 .navbar {
   max-height: 120px;
-  /* background-color: #4056A1; */
   background-color: #ad0c02;
   color: #FFFFFF;
   padding-top: 1.5em;
@@ -30,9 +29,6 @@ nav p {
 nav button {
   all: unset;
   cursor: pointer;
-}
-nav button:focus {
-  outline: skyblue 5px auto;
 }
 
 .nav-post {

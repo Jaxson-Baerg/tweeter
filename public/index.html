@@ -33,12 +33,10 @@
     <nav class="navbar">
       <span>tweeter</span>
       <div>
-        <form action="tweets/" method="GET">
-          <button type="submit" class="nav-post">
-            <p><strong>Write</strong> a new tweet</p>
-            <i class="fa-solid fa-angles-down"></i>
-          </button>
-        </form>
+        <button id="show-prompt" type="button" class="nav-post">
+          <p><strong>Write</strong> a new tweet</p>
+          <i class="fa-solid fa-angles-down"></i>
+        </button>
       </div>
     </nav>
 
@@ -55,33 +53,17 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <form action="tweets/" method="POST" enctype="application/x-www-form-urlencoded">
+      <form id="write-tweet" hidden>
         <h4>What are you humming about?</h4>
         <input type="text" name="text" id="tweet-text" placeholder="Type here...">
         <p></p>
         <button type="submit">TWEET</button>
+        <button type="button" id="hide-button">hide</button>
         <output name="counter" id="tweet-counter" for="tweet-text">140</output>
       </form>
 
       <!-- Tweet(s) container -->
-      <article>
-        <header>
-          <div class="tweet-name">
-            <img src="images/profile-hex.png">
-            <h4>Newton</h4>
-          </div>
-          <span>@SirIsaac</span>
-        </header>
-        <p>If I have seen further it is by standing on the shoulders of giants.If I have seen further it is by standing on the shoulders of giants.If I have seen further it is by standing on the shoulders of giants.</p>
-        <footer>
-          <span>10 days ago</span>
-          <div>
-            <button type="button"><i class="fa-solid fa-font-awesome"></i></button>
-            <button type="button"><i class="fa-solid fa-retweet"></i></button>
-            <button type="button"><i class="fa-regular fa-heart"></i></button>
-          </div>
-        </footer>
-      </article>
+      <div class="tweet-container"></div>
     </main>
   </body>
 </html>

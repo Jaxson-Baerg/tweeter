@@ -9,11 +9,11 @@
   background-color: #8a2c25;
 }
 
-header img {
+.profile img {
   margin-top: 50px;
 }
 
-header p {
+.profile p {
   color: #FFFFFF;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 45px;

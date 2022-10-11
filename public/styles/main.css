@@ -1,17 +1,18 @@
 main {
   background-color: #f4f1ec;
   align-self: center;
-  max-width: 90%;
   min-width: 90%;
+  max-width: 90%;
   align-items: center;
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 main form {
-  max-width: 60%;
   min-width: 60%;
+  max-width: 60%;
 }
 
 main button {
@@ -30,7 +31,7 @@ main h4 {
   margin-top: 15px;
 }
 
-main p {
+main form p {
   margin-top: 10px;
   margin-bottom: 15px;
   border-bottom: 3px solid #383838;

@@ -25,6 +25,9 @@ main button {
   border-radius: 3px;
   cursor: pointer;
 }
+main form button:hover {
+  box-shadow: 3px 3px #842f2f;
+}
 
 main h4 {
   margin: 0;
@@ -42,6 +45,10 @@ main input {
   margin-top: 5px;
   border: none;
   width: 100%;
+  border: 1px solid #f4f1ec;
+}
+main input:focus {
+  border: 1px solid #8bbcd4;
 }
 
 main input:focus, main textarea:focus {

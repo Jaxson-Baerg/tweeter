@@ -4,8 +4,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
-  background-color: #4056A1;
+  background-image: url("https://www.transparenttextures.com/patterns/xv.png");
+  /* background-color: #4056A1; */
+  background-color: #8a2c25;
 }
 
 header img {
@@ -17,11 +18,3 @@ header p {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 45px;
 }
-
-/* header h2 {
-
-}
-
-header strong {
-  font-weight: bold;
-} */

@@ -38,7 +38,7 @@ $tweet.on('paste', (e) => {
 });
 
 // Show tweet prompt when clicked
-$errorContainer = $('.error-container');
+const $errorContainer = $('.error-container');
 $('#show-prompt').on('click', () => {
   $('#write-tweet').slideDown();
 });
@@ -79,6 +79,27 @@ $tweetForm.submit((e) => {
     $tweetForm.slideUp();
     loadTweets();
   });
+});
+
+// Hide and show scroll to top button when user scrolls past the profile section
+const $page = $('html, body');
+const $window = $(window);
+$window.scroll(() => {
+  if ($window.scrollTop() > 400) {
+      $('#toTop:hidden').removeAttr('hidden');
+      $('#toTop').click(() => {
+        $page.on('scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove', () => {
+          $page.stop();
+        });
+        $page.animate({scrollTop: $page.position().top}, 'slow', () => {
+          $page.off('scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove');
+          $page.stop(true, true);
+        });
+        return false;
+      });
+  } else {
+      $('#toTop').attr('hidden', 'true');
+  }
 });
 
 // Append tweet to tweet list on main page

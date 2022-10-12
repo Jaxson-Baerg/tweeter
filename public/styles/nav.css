@@ -36,3 +36,18 @@ nav button {
   align-items: center;
   flex-direction: column;
 }
+
+.scroll-to-top {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 50px;
+  padding: 20px;
+  border: 1px solid #740800;
+  border-radius: 30px;
+  background-color: #740800;
+  cursor: pointer;
+}
+.scroll-to-top i {
+  color: #FFFFFF;
+}

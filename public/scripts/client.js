@@ -43,11 +43,15 @@ $tweet.on('paste', (e) => {
 const $errorContainer = $('.error-container');
 const $tweetForm = $('#write-tweet');
 const $tweetText = $('#tweet-text');
-
 $('#show-prompt').on('click', () => {
   $errorContainer.slideUp();
   $tweetText.removeAttr('class');
-  $tweetForm.is(':hidden') ? $tweetForm.slideDown() : $tweetForm.slideUp();
+  if ($tweetForm.is(':hidden')) {
+    $tweetForm.slideDown();
+    scrollToTopOfPage($('html, body'));
+  } else {
+    $tweetForm.slideUp();
+  }
 });
 /* --- Hide tweet prompt when hide button is clicked --- */
 $('#hide-button').on('click', () => {

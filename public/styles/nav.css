@@ -1,6 +1,6 @@
 /* Navbar styling, creating flexbox and fixing it to the top of the page */
 .navbar {
-  max-height: 120px;
+  height: 120px;
   background-color: #ad0c02;
   color: #FFFFFF;
   padding-top: 1.5em;
@@ -33,6 +33,13 @@ nav button {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.nav-post i {
+  transition: font-size 500ms;
+}
+.nav-post:hover i {
+  transition: font-size 500ms;
+  font-size: 1.5em;
 }
 
 /* Sets styling for the scroll-to-top button that appears when user scrolls past the profile section */

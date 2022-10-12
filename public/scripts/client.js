@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Keep track of tweet length and display characters left, and prevent typing after reaching maximum
+/* --- Keep track of tweet length and display characters left, and prevent typing after reaching maximum --- */
 const $tweet = $('#tweet-text');
 const $tweetTracker = $('#tweet-counter');
 $tweet.on('keypress', (e) => {
@@ -15,7 +15,8 @@ $tweet.on('keypress', (e) => {
     e.preventDefault();
   }
 });
-// Check if tweet length is maximum and allow deleting to lower tweet length
+
+/* --- Check if tweet length is maximum and allow deleting to lower tweet length --- */
 $tweet.on('keydown', (e) => {
   const tweetLength = $tweet.val().length;
 
@@ -27,7 +28,8 @@ $tweet.on('keydown', (e) => {
     }
   }
 });
-// Check if anything pasted inside will exceed tweet length maximum, prevent if so
+
+/* --- Check if anything pasted inside will exceed tweet length maximum, prevent if so --- */
 $tweet.on('paste', (e) => {
   const tweetLength = $tweet.val().length;
 
@@ -41,6 +43,7 @@ $tweet.on('paste', (e) => {
 const $errorContainer = $('.error-container');
 $('#show-prompt').on('click', () => {
   $('#write-tweet').slideDown();
+
 });
 // Hide tweet prompt when clicked
 $('#hide-button').on('click', () => {
@@ -80,48 +83,3 @@ $tweetForm.submit((e) => {
     loadTweets();
   });
 });
-
-// Hide and show scroll to top button when user scrolls past the profile section
-const $page = $('html, body');
-const $window = $(window);
-$window.scroll(() => {
-  if ($window.scrollTop() > 400) {
-      $('#toTop:hidden').removeAttr('hidden');
-      $('#toTop').click(() => {
-        $page.on('scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove', () => {
-          $page.stop();
-        });
-        $page.animate({scrollTop: $page.position().top}, 'slow', () => {
-          $page.off('scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove');
-          $page.stop(true, true);
-        });
-        return false;
-      });
-  } else {
-      $('#toTop').attr('hidden', 'true');
-  }
-});
-
-// Append tweet to tweet list on main page
-const createTweetElement = (tweetObj) => {
-  $list = $('.tweet-container');
-  $list.prepend(`<article class="tweet-article"><header><div class="tweet-name"><img src="${tweetObj.user.avatars}"><h4>${tweetObj.user.name}</h4></div><span>${tweetObj.user.handle}</span></header><p id="safe-text"></p><footer><span>${Math.round(((((Date.now()) - tweetObj.created_at)) / 1000) / 86400)} days ago</span><div><button type="button"><i class="fa-solid fa-font-awesome"></i></button><button type="button"><i class="fa-solid fa-retweet"></i></button><button type="button"><i class="fa-regular fa-heart"></i></button></div></footer></article>`);
-  $('#safe-text').text(tweetObj.content.text);
-};
-
-// Take list of tweets and append each one
-const renderTweets = (tweetArray) => {
-  $('.tweet-article').remove();
-  for (let tweet of tweetArray) {
-    createTweetElement(tweet);
-  }
-};
-
-// Load all tweets from server database and send them to be rendered
-const loadTweets = () => {
-  $.get('/tweets/', (res, req) => {
-    renderTweets(res);
-  });
-};
-
-loadTweets();

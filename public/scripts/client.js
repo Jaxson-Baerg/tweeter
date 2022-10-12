@@ -44,11 +44,10 @@ const $errorContainer = $('.error-container');
 const $tweetForm = $('#write-tweet');
 const $tweetText = $('#tweet-text');
 
-$('#show-prompt').on('click focus', (e) => {
-
+$('#show-prompt').on('click', () => {
   $errorContainer.slideUp();
   $tweetText.removeAttr('class');
-  $tweetForm.is(':hidden') && e.type === "click" ? $tweetForm.slideDown() : $tweetForm.slideUp();
+  $tweetForm.is(':hidden') ? $tweetForm.slideDown() : $tweetForm.slideUp();
 });
 /* --- Hide tweet prompt when hide button is clicked --- */
 $('#hide-button').on('click', () => {
@@ -57,10 +56,10 @@ $('#hide-button').on('click', () => {
   $tweetText.removeAttr('class');
 });
 /* --- Hide error msg when user focuses on text box --- */
-// $tweetText.on('focus', () => {
-//   $errorContainer.slideUp();
-//   $tweetText.removeAttr('class');
-// });
+$tweetText.on('focus', () => {
+  $errorContainer.slideUp();
+  $tweetText.removeAttr('class');
+});
 
 /* --- Submits user entered tweet to json database? --- */
 $tweetForm.submit((e) => {

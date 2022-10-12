@@ -39,26 +39,28 @@ $tweet.on('paste', (e) => {
   }
 });
 
-// Show tweet prompt when clicked
+/* --- Show and hide tweet prompt when clicking button on navbar --- */
 const $errorContainer = $('.error-container');
+const $tweetForm = $('#write-tweet');
+const $tweetText = $('#tweet-text');
 $('#show-prompt').on('click', () => {
-  $('#write-tweet').slideDown();
-
+  $errorContainer.slideUp();
+  $tweetText.removeAttr('class');
+  $tweetForm.is(':hidden') ? $tweetForm.slideDown() : $tweetForm.slideUp();
 });
-// Hide tweet prompt when clicked
+/* --- Hide tweet prompt when hide button is clicked --- */
 $('#hide-button').on('click', () => {
   $errorContainer.slideUp();
-  $('#write-tweet').slideUp();
-  $('#tweet-text').removeAttr('class');
+  $tweetForm.slideUp();
+  $tweetText.removeAttr('class');
 });
-
-$('#tweet-text').on('focus', () => {
+/* --- Hide error msg when user focuses on text box --- */
+$tweetText.on('focus', () => {
   $errorContainer.slideUp();
-  $('#tweet-text').removeAttr('class');
+  $tweetText.removeAttr('class');
 });
 
-// Submits user entered tweet to json database?
-const $tweetForm = $('#write-tweet');
+/* --- Submits user entered tweet to json database? --- */
 $tweetForm.submit((e) => {
   e.preventDefault();
 
@@ -70,11 +72,11 @@ $tweetForm.submit((e) => {
         $errorContainer.attr('class', 'flexible');
       }
     });
-    $('#tweet-text').attr('class', 'invalid');
+    $tweetText.attr('class', 'invalid');
     return false;
   }
-  $('.error-container').slideUp();
-  $('#tweet-text').removeAttr('class');
+  $errorContainer.slideUp();
+  $tweetText.removeAttr('class');
 
   $.post('/tweets/', $tweetForm.serialize(), () => {
     $tweetForm[0].childNodes[3].value = '';

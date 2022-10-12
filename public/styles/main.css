@@ -1,3 +1,4 @@
+/* Main box styling, creating flexbox and aligning it's content */
 main {
   background-color: #f4f1ec;
   align-self: center;
@@ -14,7 +15,6 @@ main form {
   min-width: 60%;
   max-width: 60%;
 }
-
 main button {
   all: unset;
   padding: 4px;
@@ -44,13 +44,11 @@ main h4 {
   margin: 0;
   margin-top: 15px;
 }
-
 main form p {
   margin-top: 10px;
   margin-bottom: 15px;
   border-bottom: 3px solid #383838;
 }
-
 main input {
   font-size: 20px;
   margin-top: 5px;
@@ -65,7 +63,7 @@ main input:focus {
 main input:focus, main textarea:focus {
   outline: none;
 }
-.invalid {
+.invalid { /* Styling for invalid form */
   background-color: rgb(171, 78, 78);
 }
 
@@ -74,6 +72,7 @@ main output {
   float: right;
 }
 
+/* Styling for the error message */
 .flexible {
   display: flex;
   max-height: 41.6px;
@@ -82,7 +81,6 @@ main output {
 .flexible i {
   color: rgb(171, 78, 78);
 }
-
 #error-msg {
   padding-left: 40px;
   padding-right: 40px;

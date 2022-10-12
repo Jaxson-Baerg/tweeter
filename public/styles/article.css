@@ -1,3 +1,4 @@
+/* Tweet box styling, creating flexbox and fixing it's width inside the main container */
 .tweet-container {
   display: flex;
   flex-direction: column;
@@ -19,7 +20,6 @@ article {
   border-radius: 2px;
   padding: 10px;
 }
-
 article:hover {
   box-shadow: 5px 5px #7c7c7c;
 }
@@ -27,7 +27,6 @@ article:hover {
 article span {
   color: #a6a6a6;
 }
-
 article header {
   min-width: 100%;
   display: flex;
@@ -46,27 +45,23 @@ article img {
   height: 75px;
   margin-right: 10px;
 }
-
 article button {
   all: unset;
   cursor: pointer;
   margin: 3px;
 }
-
 article i {
   color: #8a2c25;
 }
 article i:hover {
   color: #576fd9;
 }
-
 article p {
   min-width: 95%;
   max-width: 95%;
   padding-bottom: 20px;
   border-bottom: 3px solid #383838;
 }
-
 article footer {
   min-width: 100%;
   display: flex;

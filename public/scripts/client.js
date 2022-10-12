@@ -46,10 +46,20 @@ $('#hide-button').on('click', () => {
   $('#write-tweet').slideUp();
 });
 
+$('#tweet-text').on('focus', () => {
+  $('#tweet-text').removeAttr('class');
+});
+
 // Submits user entered tweet to json database?
 const $tweetForm = $('#write-tweet');
 $tweetForm.submit((e) => {
   e.preventDefault();
+
+  if ($tweetForm.serialize() === 'text=') {
+    $('#tweet-text').attr('class', 'invalid');
+    return false;
+  }
+  $('#tweet-text').removeAttr('class');
 
   $.post('/tweets/', $tweetForm.serialize(), () => {
     $tweetForm[0].childNodes[3].value = '';

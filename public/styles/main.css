@@ -60,10 +60,13 @@ main input {
 }
 main input:focus {
   border: 1px solid #8bbcd4;
+  background-color: white;
 }
-
 main input:focus, main textarea:focus {
   outline: none;
+}
+.invalid {
+  background-color: rgb(171, 78, 78);
 }
 
 main output {

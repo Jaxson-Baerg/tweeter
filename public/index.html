@@ -53,6 +53,12 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <div class="error-container" hidden>
+        <i class="fa-solid fa-triangle-exclamation left-icon"></i>
+        <p id="error-msg"></p>
+        <i class="fa-solid fa-triangle-exclamation right-icon"></i>
+      </div>
+      
       <form id="write-tweet" hidden>
         <h4>What are you humming about?</h4>
         <input type="text" name="text" id="tweet-text" placeholder="Type here...">

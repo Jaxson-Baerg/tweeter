@@ -73,3 +73,20 @@ main output {
   font-family: 'Bungee', sans-serif;
   float: right;
 }
+
+.flexible {
+  display: flex;
+  max-height: 41.6px;
+  align-items: center;
+}
+.flexible i {
+  color: rgb(171, 78, 78);
+}
+
+#error-msg {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 10px;
+  margin-bottom: 0;
+  border: 2px solid rgb(171, 78, 78);
+}

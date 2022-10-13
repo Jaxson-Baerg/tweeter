@@ -1,0 +1,74 @@
+/* Tweet box styling, creating flexbox and fixing it's width inside the main container */
+.tweet-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 60%;
+  max-width: 60%;
+}
+
+article {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  align-self: center;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffcdca;
+  border: 3px solid #383838;
+  border-radius: 2px;
+  padding: 10px;
+
+  span {
+    color: #a6a6a6;
+  }
+
+  header {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  img {
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+  }
+
+  button {
+    all: unset;
+    cursor: pointer;
+    margin: 3px;
+  }
+
+  i {
+    color: #8a2c25;
+  }
+  i:hover {
+    color: #576fd9;
+  }
+
+  p {
+    min-width: 95%;
+    max-width: 95%;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #383838;
+  }
+
+  footer {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+article:hover {
+  box-shadow: 5px 5px #7c7c7c;
+}
+
+.tweet-name {
+  display: flex;
+  align-items: center;
+}

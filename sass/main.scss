@@ -1,0 +1,94 @@
+/* Main box styling, creating flexbox and aligning it's content */
+main {
+  background-color: #f4f1ec;
+  align-self: center;
+  min-width: 90%;
+  max-width: 90%;
+  align-items: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  form {
+    min-width: 60%;
+    max-width: 60%;
+    button:hover {
+      box-shadow: 3px 3px #842f2f;
+    }
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #383838;
+    }
+  }
+
+  button {
+    all: unset;
+    padding: 4px;
+    font-family: 'Bungee', sans-serif;
+    background-color: #570803;
+    color: #FFFFFF;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  h4 {
+    margin: 0;
+    margin-top: 15px;
+  }
+
+  input {
+    font-size: 20px;
+    margin-top: 5px;
+    border: none;
+    width: 100%;
+    border: 1px solid #f4f1ec;
+  }
+
+  input:focus {
+    border: 1px solid #8bbcd4;
+    background-color: white;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+  }
+
+  output {
+    font-family: 'Bungee', sans-serif;
+    float: right;
+  }
+}
+
+#hide-button {
+  all: unset;
+  cursor: pointer;
+  margin-left: 10px;
+  border-bottom: 1px #383838;
+}
+#hide-button:hover {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.invalid { /* Styling for invalid form */
+  background-color: rgb(171, 78, 78);
+}
+
+/* Styling for the error message */
+.flexible {
+  display: flex;
+  max-height: 41.6px;
+  align-items: center;
+}
+.flexible i {
+  color: rgb(171, 78, 78);
+}
+#error-msg {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 10px;
+  margin-bottom: 0;
+  border: 2px solid rgb(171, 78, 78);
+}

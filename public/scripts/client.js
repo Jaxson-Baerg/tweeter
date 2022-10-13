@@ -1,9 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 /* --- Keep track of tweet length and display characters left, and prevent typing after reaching maximum --- */
 const $tweet = $('#tweet-text');
 const $tweetTracker = $('#tweet-counter');
@@ -52,6 +46,7 @@ $('#show-prompt').on('click', () => {
   } else {
     $tweetForm.slideUp();
   }
+  $tweetText.focus();
 });
 /* --- Hide tweet prompt when hide button is clicked --- */
 $('#hide-button').on('click', () => {
@@ -65,10 +60,11 @@ $tweetText.on('focus', () => {
   $tweetText.removeAttr('class');
 });
 
-/* --- Submits user entered tweet to json database? --- */
+/* --- Submits user entered tweet to json database and loads all tweets afterwards --- */
 $tweetForm.submit((e) => {
   e.preventDefault();
 
+  /* --- Form validation, display error if not valid --- */
   if ($tweetForm.serialize() === 'text=') {
     $('#error-msg').text("Please enter your tweet!");
     $errorContainer.slideDown({
@@ -83,6 +79,7 @@ $tweetForm.submit((e) => {
   $errorContainer.slideUp();
   $tweetText.removeAttr('class');
 
+  /* --- JQuery AJAX POST request to server with serialized form content --- */
   $.post('/tweets/', $tweetForm.serialize(), () => {
     $tweetForm[0].childNodes[3].value = '';
     $tweetForm[0].childNodes[11].innerHTML = 140;

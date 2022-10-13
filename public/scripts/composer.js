@@ -2,7 +2,9 @@
 const $page = $('html, body');
 const $window = $(window);
 $window.scroll(() => {
-  if ($window.scrollTop() > 400) {
+  let scrollVal;
+  $window.width() > 1024 ? scrollVal = 100 : scrollVal = 400;
+  if ($window.scrollTop() > scrollVal) {
       $('#toTop:hidden').removeAttr('hidden');
       $('#toTop').click(() => {
         scrollToTopOfPage($page);
@@ -27,8 +29,29 @@ const scrollToTopOfPage = (page) => {
 /* --- Append tweet to tweet list on main page --- */
 const createTweetElement = (tweetObj) => {
   $list = $('.tweet-container');
-  $list.prepend(`<article class="tweet-article"><header><div class="tweet-name"><img src="${tweetObj.user.avatars}"><h4>${tweetObj.user.name}</h4></div><span>${tweetObj.user.handle}</span></header><p id="safe-text"></p><footer><span>${Math.round(((((Date.now()) - tweetObj.created_at)) / 1000) / 86400)} days ago</span><div><button type="button"><i class="fa-solid fa-font-awesome"></i></button><button type="button"><i class="fa-solid fa-retweet"></i></button><button type="button"><i class="fa-regular fa-heart"></i></button></div></footer></article>`);
-  $('#safe-text').text(tweetObj.content.text);
+
+  /* --- Calculate the time from now to when the tweet was created *not using the timeago package* --- */
+  let timeAgo = "";
+  const secondsAgo = Math.round(((((Date.now()) - tweetObj.created_at)) / 1000));
+  const daysAgo = Math.round(secondsAgo / 86400);
+  const hoursAgo = Math.round(secondsAgo / 3600);
+  const minutesAgo = Math.round(secondsAgo / 60);
+  if (daysAgo === 0) {
+    if (hoursAgo === 0) {
+      if (minutesAgo === 0) {
+        timeAgo = secondsAgo + " second(s) ago";
+      } else {
+        timeAgo = minutesAgo + " minute(s) ago";
+      }
+    } else {
+      timeAgo = hoursAgo + " hour(s) ago";
+    }
+  } else {
+    timeAgo = daysAgo + " day(s) ago";
+  }
+
+  $list.prepend(`<article class="tweet-article"><header><div class="tweet-name"><img src="${tweetObj.user.avatars}"><h4>${tweetObj.user.name}</h4></div><span>${tweetObj.user.handle}</span></header><p id="safe-text"></p><footer><span>${timeAgo}</span><div><button type="button"><i class="fa-solid fa-font-awesome"></i></button><button type="button"><i class="fa-solid fa-retweet"></i></button><button type="button"><i class="fa-regular fa-heart"></i></button></div></footer></article>`);
+  $('#safe-text').text(tweetObj.content.text); // Ensure safe text for any scripts in tweet text
 };
 
 /* --- Take list of tweets and append each one --- */
@@ -46,4 +69,5 @@ const loadTweets = () => {
   });
 };
 
+/* --- Display initial tweets when page loads for first time --- */
 loadTweets();

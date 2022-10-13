@@ -8,7 +8,7 @@
     "content": {
       "text": "If I have seen further it is by standing on the shoulders of giants"
     },
-    "created_at": 1665440806106
+    "created_at": 1665419532454
   },
   {
     "user": {
@@ -19,6 +19,17 @@
     "content": {
       "text": "Je pense , donc je suis"
     },
-    "created_at": 1665527206106
+    "created_at": 1665505932454
+  },
+  {
+    "user": {
+      "name": "Einstein",
+      "avatars": "https://i.imgur.com/2WZtOD6.png",
+      "handle": "@AlEinstein"
+    },
+    "content": {
+      "text": "Insanity is doing the same thing, over and over again, but expecting different results."
+    },
+    "created_at": 1665592332454
   }
 ]

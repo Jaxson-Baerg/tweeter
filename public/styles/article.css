@@ -20,10 +20,6 @@ article {
   border-radius: 2px;
   padding: 10px;
 }
-article:hover {
-  box-shadow: 5px 5px #7c7c7c;
-}
-
 article span {
   color: #a6a6a6;
 }
@@ -34,12 +30,6 @@ article header {
   justify-content: space-between;
   align-items: center;
 }
-
-.tweet-name {
-  display: flex;
-  align-items: center;
-}
-
 article img {
   width: 75px;
   height: 75px;
@@ -66,4 +56,13 @@ article footer {
   min-width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+article:hover {
+  box-shadow: 5px 5px #7c7c7c;
+}
+
+.tweet-name {
+  display: flex;
+  align-items: center;
 }

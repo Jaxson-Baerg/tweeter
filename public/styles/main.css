@@ -5,49 +5,35 @@ main {
   min-width: 90%;
   max-width: 90%;
   align-items: center;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-
 main form {
   min-width: 60%;
   max-width: 60%;
 }
-main button {
-  all: unset;
-  padding: 4px;
-  font-family: 'Bungee', sans-serif;
-  /* background-color: #4056A1; */
-  background-color: #570803;
-  color: #FFFFFF;
-  border-radius: 3px;
-  cursor: pointer;
-}
 main form button:hover {
   box-shadow: 3px 3px #842f2f;
-}
-
-#hide-button {
-  all: unset;
-  cursor: pointer;
-  margin-left: 10px;
-  border-bottom: 1px #383838;
-}
-#hide-button:hover {
-  box-shadow: none;
-  text-decoration: underline;
-}
-
-main h4 {
-  margin: 0;
-  margin-top: 15px;
 }
 main form p {
   margin-top: 10px;
   margin-bottom: 15px;
   border-bottom: 3px solid #383838;
+}
+main button {
+  all: unset;
+  padding: 4px;
+  font-family: "Bungee", sans-serif;
+  background-color: #570803;
+  color: #FFFFFF;
+  border-radius: 3px;
+  cursor: pointer;
+}
+main h4 {
+  margin: 0;
+  margin-top: 15px;
 }
 main input {
   font-size: 20px;
@@ -63,13 +49,25 @@ main input:focus {
 main input:focus, main textarea:focus {
   outline: none;
 }
-.invalid { /* Styling for invalid form */
-  background-color: rgb(171, 78, 78);
+main output {
+  font-family: "Bungee", sans-serif;
+  float: right;
 }
 
-main output {
-  font-family: 'Bungee', sans-serif;
-  float: right;
+#hide-button {
+  all: unset;
+  cursor: pointer;
+  margin-left: 10px;
+  border-bottom: 1px #383838;
+}
+
+#hide-button:hover {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.invalid { /* Styling for invalid form */
+  background-color: rgb(171, 78, 78);
 }
 
 /* Styling for the error message */
@@ -78,9 +76,11 @@ main output {
   max-height: 41.6px;
   align-items: center;
 }
+
 .flexible i {
   color: rgb(171, 78, 78);
 }
+
 #error-msg {
   padding-left: 40px;
   padding-right: 40px;

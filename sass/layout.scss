@@ -5,9 +5,8 @@
  */
 html {
   box-sizing: border-box;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -20,13 +19,13 @@ body {
   flex-direction: column;
   overflow: auto;
 }
-
 .screen-scaler {
   display: flex;
   flex-direction: column;
   overflow: auto;
 }
 
+// Responsive styling for different screen sizes
 @media only screen and (min-width: 1024px) {
   .screen-scaler {
     display: inline;

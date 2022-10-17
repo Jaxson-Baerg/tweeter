@@ -26,6 +26,19 @@ const scrollToTopOfPage = (page) => {
   return false;
 };
 
+const composerCharacterCounter = () => {
+  const $tweetTracker = $('#tweet-counter');
+  let tweetLength = 140 - $('#tweet-text').val().length;
+
+  if (tweetLength < 0) {
+    $tweetTracker.css({ color: 'red'});
+  } else {
+    $tweetTracker.css({ color: 'rgb(84, 81, 73'});
+  }
+
+  $tweetTracker.text(tweetLength);
+};
+
 /* --- Append tweet to tweet list on main page --- */
 const createTweetElement = (tweetObj) => {
   $list = $('.tweet-container');
@@ -53,6 +66,34 @@ const createTweetElement = (tweetObj) => {
   $list.prepend(`<article class="tweet-article"><header><div class="tweet-name"><img src="${tweetObj.user.avatars}"><h4>${tweetObj.user.name}</h4></div><span>${tweetObj.user.handle}</span></header><p id="safe-text"></p><footer><span>${timeAgo}</span><div><button type="button"><i class="fa-solid fa-font-awesome"></i></button><button type="button"><i class="fa-solid fa-retweet"></i></button><button type="button"><i class="fa-regular fa-heart"></i></button></div></footer></article>`);
   $('#safe-text').text(tweetObj.content.text); // Ensure safe text for any scripts in tweet text
 };
+
+/* --- Submits user entered tweet to json database and loads all tweets afterwards --- */
+$tweetForm.submit((e) => {
+  e.preventDefault();
+
+  /* --- Form validation, display error if not valid --- */
+  if ($tweetForm.serialize() === 'text=' || $tweetForm.serialize().length >= 145) {
+    $('#error-msg').text("Please enter a valid tweet!");
+    $errorContainer.slideDown({
+      start: function () {
+        $errorContainer.removeAttr('style');
+        $errorContainer.attr('class', 'flexible');
+      }
+    });
+    $tweetText.attr('class', 'invalid');
+    return false;
+  }
+  $errorContainer.slideUp();
+  $tweetText.removeAttr('class');
+
+  /* --- JQuery AJAX POST request to server with serialized form content --- */
+  $.post('/tweets/', $tweetForm.serialize(), () => {
+    $tweetForm[0].childNodes[3].value = '';
+    $tweetForm[0].childNodes[11].innerHTML = 140;
+    $tweetForm.slideUp();
+    loadTweets();
+  });
+});
 
 /* --- Take list of tweets and append each one --- */
 const renderTweets = (tweetArray) => {

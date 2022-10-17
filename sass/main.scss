@@ -81,6 +81,8 @@ main {
   display: flex;
   max-height: 41.6px;
   align-items: center;
+  align-self: flex-end;
+  margin-right: 25%;
 }
 .flexible i {
   color: rgb(171, 78, 78);

@@ -75,6 +75,8 @@ main output {
   display: flex;
   max-height: 41.6px;
   align-items: center;
+  align-self: flex-end;
+  margin-right: 25%;
 }
 
 .flexible i {

@@ -63,7 +63,31 @@ const createTweetElement = (tweetObj) => {
     timeAgo = daysAgo + " day(s) ago";
   }
 
-  $list.prepend(`<article class="tweet-article"><header><div class="tweet-name"><img src="${tweetObj.user.avatars}"><h4>${tweetObj.user.name}</h4></div><span>${tweetObj.user.handle}</span></header><p id="safe-text"></p><footer><span>${timeAgo}</span><div><button type="button"><i class="fa-solid fa-font-awesome"></i></button><button type="button"><i class="fa-solid fa-retweet"></i></button><button type="button"><i class="fa-regular fa-heart"></i></button></div></footer></article>`);
+  $list.prepend(`
+    <article class="tweet-article">
+      <header>
+        <div class="tweet-name">
+          <img src="${tweetObj.user.avatars}">
+          <h4>${tweetObj.user.name}</h4>
+        </div>
+        <span>${tweetObj.user.handle}</span>
+      </header>
+      <p id="safe-text"></p>
+      <footer>
+        <span>${timeAgo}</span>
+        <div>
+          <button type="button">
+            <i class="fa-solid fa-font-awesome"></i>
+          </button>
+          <button type="button">
+            <i class="fa-solid fa-retweet"></i>
+          </button>
+          <button type="button">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+      </footer>
+    </article>`);
   $('#safe-text').text(tweetObj.content.text); // Ensure safe text for any scripts in tweet text
 };
 
@@ -105,7 +129,7 @@ const renderTweets = (tweetArray) => {
 
 /* --- Load all tweets from server database and send them to be rendered --- */
 const loadTweets = () => {
-  $.get('/tweets/', (res, req) => {
+  $.get('/tweets/').then((res) => {
     renderTweets(res);
   });
 };

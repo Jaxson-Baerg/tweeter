@@ -96,7 +96,8 @@ $tweetForm.submit((e) => {
   e.preventDefault();
 
   /* --- Form validation, display error if not valid --- */
-  if ($tweetForm.serialize() === 'text=' || $tweetForm.serialize().length >= 145) {
+  const $tweetText = $('#tweet-text');
+  if ($tweetText.val() === '' || $tweetText.val().length > 140) {
     $('#error-msg').text("Please enter a valid tweet!");
     $errorContainer.slideDown({
       start: function () {
